@@ -11,7 +11,8 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'groovy'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 version = '0.0.1-SNAPSHOT'
@@ -21,10 +22,15 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.codehaus.groovy:groovy-all:2.4.10')
+    compile('org.projectlombok:lombok:1.16.16')
+    compile('com.h2database:h2')
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
+	testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
 }
