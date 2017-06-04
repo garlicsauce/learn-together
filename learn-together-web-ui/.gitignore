@@ -1,28 +1,4 @@
-target
-node
-node_modules
-.idea
-*.iml
-.gradle
-build
-model/generated
-.classpath
-.project
-.settings
-bin
-.tmp
-.merge_file*
-.sass-cache
-.DS_Store
-gradle-app.setting
-logs
-generated
-tmpjsdeps
-nbproject
-*.tlog
-classes
-
- See http://help.github.com/ignore-files/ for more about ignoring files.
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /dist
@@ -39,7 +15,14 @@ classes
 .c9/
 *.launch
 .settings/
+*.sublime-workspace
 
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
