@@ -8,9 +8,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableJpaRepositories
 @EnableWebMvc
 @SpringBootApplication
-public class LearnTogetherApplication {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LearnTogetherApplication.class, args);
+		SpringApplication.run(App.class, args);
 	}
 }
