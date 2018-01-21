@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath 'gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.17.2'
+        classpath 'org.liquibase:liquibase-gradle-plugin:1.2.4'
     }
 }
 
@@ -19,6 +20,7 @@ apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'com.palantir.docker'
+apply plugin: 'org.liquibase.gradle'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -33,6 +35,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.projectlombok:lombok:1.16.16'
     compile 'org.postgresql:postgresql:9.4.1212'
+    compile 'org.liquibase:liquibase-core:3.5.3'
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     testCompile 'org.codehaus.groovy:groovy-all:2.4.10'
