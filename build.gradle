@@ -4,9 +4,13 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath 'gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.17.2'
     }
 }
 
@@ -14,6 +18,7 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'com.palantir.docker'
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -23,14 +28,21 @@ repositories {
 }
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.codehaus.groovy:groovy-all:2.4.10')
-    compile('org.projectlombok:lombok:1.16.16')
-    compile('com.h2database:h2')
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.projectlombok:lombok:1.16.16'
+    compile 'org.postgresql:postgresql:9.4.1212'
 
-    testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
-    testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.10'
+    testCompile 'org.spockframework:spock-spring:1.1-groovy-2.4'
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+}
+
+docker {
+    name 'hub.docker.com/garlicsauce/learn-together:latest'
+    files jar.archivePath, 'src/docker/wait-for-it.sh'
+    buildArgs(['JAR_FILE': "${jar.archiveName}",
+               'WAIT_FOR_IT': 'wait-for-it.sh'])
 }
