@@ -1,6 +1,8 @@
 # Learn together
 
     Never learn to your exams alone again!
+    
+[![Build Status](https://travis-ci.org/garlicsauce/learn-together.svg?branch=develop)](https://travis-ci.org/garlicsauce/learn-together)
 
 ## Overview
 
