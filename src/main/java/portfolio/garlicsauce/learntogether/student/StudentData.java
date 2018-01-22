@@ -1,4 +1,4 @@
-package portfolio.garlicsauce.learntogether.user;
+package portfolio.garlicsauce.learntogether.student;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserData {
+public class StudentData {
 
     private String login;
+    private String password;
     private String firstName;
     private String lastName;
 }
