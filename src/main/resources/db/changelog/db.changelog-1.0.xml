@@ -6,23 +6,29 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
 
     <changeSet author="garlicsauce" id="1.0">
-        <createTable tableName="user">
+        <createTable tableName="student">
             <column name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" unique="true"/>
             </column>
             <column name="first_name" type="VARCHAR(250)">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="last_name" type="VARCHAR(250)">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="login" type="VARCHAR(250)">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="password" type="VARCHAR(250)">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
+                <constraints nullable="false"/>
             </column>
         </createTable>
+
+        <createSequence incrementBy="1"
+                        startValue="1"
+                        minValue="1"
+                        maxValue="999999"
+                        sequenceName="hibernate_sequence"/>
     </changeSet>
 
 </databaseChangeLog>

@@ -1,5 +1,7 @@
-package portfolio.garlicsauce.learntogether.user;
+package portfolio.garlicsauce.learntogether.student;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,9 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-public class User implements Serializable {
+public class Student implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
