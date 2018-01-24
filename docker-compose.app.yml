@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres:9.4-alpine"
+    ports:
+     - "5432:5432"
+    environment:
+      POSTGRES_USER: learn-together
+      POSTGRES_PASSWORD: learn-together
+
+  backend:
+    image: "garlicsauce/learn-together:latest"
+    ports:
+     - "8080:8080"
+    links:
+      - postgres
+    depends_on:
+      - postgres
