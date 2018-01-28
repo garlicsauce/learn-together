@@ -9,4 +9,4 @@ ARG WAIT_FOR_IT
 COPY ${WAIT_FOR_IT} ./wait-for-it.sh
 RUN chmod +x wait-for-it.sh
 
-CMD ./wait-for-it.sh -t 60 postgres:5432 -- java -jar app.jar
+CMD ./wait-for-it.sh -t 60 postgres:5432 -- java -jar -Dspring.datasource.url=jdbc:postgresql://postgres:5432/learn-together app.jar
