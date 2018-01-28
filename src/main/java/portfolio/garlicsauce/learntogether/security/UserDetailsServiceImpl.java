@@ -14,16 +14,16 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class StudentUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final StudentRepository studentRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Student> student = studentRepository.findByLogin(username);
+        Optional<Student> student = studentRepository.findByUsername(username);
 
         if (student.isPresent()) {
-            return new User(student.get().getLogin(), student.get().getPassword(), Collections.emptyList());
+            return new User(student.get().getUsername(), student.get().getPassword(), Collections.emptyList());
         }
 
         throw new UsernameNotFoundException(username);

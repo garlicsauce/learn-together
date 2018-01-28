@@ -18,7 +18,7 @@ public class StudentMapper {
         return Student.builder()
                 .firstName(studentData.getFirstName())
                 .lastName(studentData.getLastName())
-                .login(studentData.getLogin())
+                .username(studentData.getUsername())
                 .password(passwordEncoder.encode(studentData.getPassword()))
                 .build();
     }
