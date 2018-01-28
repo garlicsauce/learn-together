@@ -1,14 +1,18 @@
 package portfolio.garlicsauce.learntogether.student
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import spock.lang.Specification
 
 class StudentMapperSpec extends Specification {
 
-    def mapper = new StudentMapper()
+    def passwordEncoderMock = Mock(BCryptPasswordEncoder)
+    def mapper = new StudentMapper(passwordEncoderMock)
 
     def "should map dto to entity"() {
         given:
             def dto = new StudentData('login', 'password', 'firstName', 'lastName')
+        and:
+            passwordEncoderMock.encode(dto.password) >> 'hash'
 
         when:
             def entity = mapper.map(dto)
@@ -16,7 +20,7 @@ class StudentMapperSpec extends Specification {
         then:
             with(entity) {
                 login == 'login'
-                password == 'password'
+                password == 'hash'
                 firstName == 'firstName'
                 lastName == 'lastName'
             }

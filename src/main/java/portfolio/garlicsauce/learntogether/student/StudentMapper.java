@@ -1,9 +1,14 @@
 package portfolio.garlicsauce.learntogether.student;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class StudentMapper {
+
+    private final BCryptPasswordEncoder passwordEncoder;
 
     public Student map(StudentData studentData) {
         if (studentData == null) {
@@ -14,7 +19,7 @@ public class StudentMapper {
                 .firstName(studentData.getFirstName())
                 .lastName(studentData.getLastName())
                 .login(studentData.getLogin())
-                .password(studentData.getPassword())
+                .password(passwordEncoder.encode(studentData.getPassword()))
                 .build();
     }
 }
