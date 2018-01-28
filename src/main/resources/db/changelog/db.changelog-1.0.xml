@@ -16,7 +16,7 @@
             <column name="last_name" type="VARCHAR(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="login" type="VARCHAR(250)">
+            <column name="username" type="VARCHAR(250)">
                 <constraints nullable="false" unique="true"/>
             </column>
             <column name="password" type="VARCHAR(250)">

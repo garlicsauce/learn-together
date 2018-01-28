@@ -10,7 +10,7 @@ class StudentMapperSpec extends Specification {
 
     def "should map dto to entity"() {
         given:
-            def dto = new StudentData('login', 'password', 'firstName', 'lastName')
+            def dto = new StudentData('username', 'password', 'firstName', 'lastName')
         and:
             passwordEncoderMock.encode(dto.password) >> 'hash'
 
@@ -19,7 +19,7 @@ class StudentMapperSpec extends Specification {
 
         then:
             with(entity) {
-                login == 'login'
+                username == 'username'
                 password == 'hash'
                 firstName == 'firstName'
                 lastName == 'lastName'
