@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -21,7 +23,7 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping
-    public ResponseEntity createStudent(@RequestBody StudentData request) {
+    public ResponseEntity createStudent(@RequestBody @Valid StudentData request) {
         Long studentId = studentService.createStudent(request).getId();
 
         UriComponents newResourceUri = UriComponentsBuilder.fromPath(String.format("/student/%s", studentId))
