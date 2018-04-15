@@ -7,19 +7,27 @@
 
     <changeSet author="garlicsauce" id="1.0">
         <createTable tableName="student">
-            <column name="id" type="BIGINT">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
+            <column name="id"
+                    type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             unique="true"/>
             </column>
-            <column name="first_name" type="VARCHAR2(250)">
+            <column name="first_name"
+                    type="VARCHAR2(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="last_name" type="VARCHAR2(250)">
+            <column name="last_name"
+                    type="VARCHAR2(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="username" type="VARCHAR2(250)">
-                <constraints nullable="false" unique="true"/>
+            <column name="username"
+                    type="VARCHAR2(250)">
+                <constraints nullable="false"
+                             unique="true"/>
             </column>
-            <column name="password" type="VARCHAR2(250)">
+            <column name="password"
+                    type="VARCHAR2(250)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -27,6 +35,35 @@
         <createSequence incrementBy="1"
                         startValue="1"
                         sequenceName="hibernate_sequence"/>
+    </changeSet>
+
+    <changeSet author="garlicsauce" id="1.1">
+        <createTable tableName="advertisement">
+            <column name="id"
+                    type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             unique="true"/>
+            </column>
+            <column name="university"
+                    type="VARCHAR2(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject"
+                    type="VARCHAR2(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id"
+                    type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="advertisement"
+                                 baseColumnNames="author_id"
+                                 constraintName="fk_advertisement_student"
+                                 referencedTableName="student"
+                                 referencedColumnNames="id"/>
     </changeSet>
 
 </databaseChangeLog>
