@@ -26,7 +26,7 @@ class StudentControllerSpec extends Specification {
                     .lastName('Snow')
                     .build()
         and:
-            serviceMock.createStudent(_ as StudentData) >> Mock(Student) { getId() >> 1L }
+            serviceMock.createStudent(request) >> Mock(Student) { getId() >> 1L }
 
         expect:
             mockMvc.perform(post('/student').content(objectMapper.writeValueAsString(request)).contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))

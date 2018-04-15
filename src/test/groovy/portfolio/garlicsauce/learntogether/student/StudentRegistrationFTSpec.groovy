@@ -22,6 +22,14 @@ class StudentRegistrationFTSpec extends Specification {
 
     def objectMapper = new ObjectMapper()
 
+    def setup() {
+        studentRepository.deleteAll()
+    }
+
+    def cleanup() {
+        studentRepository.deleteAll()
+    }
+
     def "should successfully register user on valid POST request"() {
         given: 'valid request'
             def request = StudentData.builder()

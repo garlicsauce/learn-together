@@ -1,4 +1,4 @@
-package portfolio.garlicsauce.learntogether.student;
+package portfolio.garlicsauce.learntogether.advertisement;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +14,17 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/advertisement")
 @RequiredArgsConstructor
-public class StudentController {
+public class AdvertisementController {
 
-    private final StudentService studentService;
+    private final AdvertisementService advertisementService;
 
     @PostMapping
-    public ResponseEntity createStudent(@RequestBody @Valid StudentData request) {
-        Long studentId = studentService.createStudent(request).getId();
+    public ResponseEntity createLearningAd(@RequestBody @Valid AdvertisementData request) {
+        Long adId = advertisementService.createAdvertisement(request).getId();
 
-        UriComponents newResourceUri = UriComponentsBuilder.fromPath(String.format("/student/%s", studentId))
+        UriComponents newResourceUri = UriComponentsBuilder.fromPath(String.format("/advertisement/%s", adId))
                 .build();
 
         return ResponseEntity.created(newResourceUri.toUri())
@@ -32,7 +32,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Student getStudent(@PathVariable("id") long id) {
-        return studentService.findStudent(id);
+    public Advertisement getAd(@PathVariable("id") long id) {
+        return advertisementService.findAd(id);
     }
 }
